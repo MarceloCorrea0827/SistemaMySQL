@@ -46,5 +46,16 @@ namespace SistemaMySQL.Model
             }
         }
 
+        public void Excluir(Clientes dado)
+        {
+            try
+            {
+                dao.Excluir(dado);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

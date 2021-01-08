@@ -94,19 +94,42 @@ namespace SistemaMySQL.View
             }
         }
 
+        public void Excluir(Clientes dado)
+        {
+            try
+            {
+                dado.Id = int.Parse(txtId.Text);
+
+                model.Excluir(dado);
+                MessageBox.Show("Cliente Excluído com sucesso!");
+                DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir os dados do cliente " + ex.Message);
+            }
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Clientes dado = new Clientes();
             Salvar(dado);
             Listar();
+            AtualizaCampos();
+            DesabilitarCampos();
         }
 
-        private void gridClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void AtualizaCampos()
         {
             txtId.Text = gridClientes.CurrentRow.Cells[0].Value.ToString();
             txtNome.Text = gridClientes.CurrentRow.Cells[1].Value.ToString();
             cmbSexo.Text = gridClientes.CurrentRow.Cells[2].Value.ToString();
             dtNascimento.Text = gridClientes.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void gridClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AtualizaCampos();
         }
 
         private void gridClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -119,6 +142,22 @@ namespace SistemaMySQL.View
             Clientes dado = new Clientes();
             Editar(dado);
             Listar();
+        }
+
+        private void gridClientes_Enter(object sender, EventArgs e)
+        {
+            if (gridClientes.CurrentRow.Cells[0].Value.ToString() != "")
+            {
+                AtualizaCampos();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Clientes dado = new Clientes();
+            Excluir(dado);
+            Listar();
+            AtualizaCampos();
         }
     }
 }

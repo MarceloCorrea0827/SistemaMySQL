@@ -67,5 +67,21 @@ namespace SistemaMySQL.DAO
             }
         }
 
+        public void Excluir(Clientes dado)
+        {
+            try
+            {
+                conn.AbrirConexao();
+                sql = new MySqlCommand("delete from clientes where id = @id", conn.conn);
+                sql.Parameters.AddWithValue("@id", dado.Id);
+                sql.ExecuteNonQuery();
+                conn.fecharConexao();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir dados do cliente " + ex.Message); ;
+                conn.fecharConexao();
+            }
+        }
     }
 }

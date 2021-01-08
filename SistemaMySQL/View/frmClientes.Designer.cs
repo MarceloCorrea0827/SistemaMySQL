@@ -48,7 +48,7 @@ namespace SistemaMySQL.View
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 22);
+            this.label1.Location = new System.Drawing.Point(80, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(19, 13);
             this.label1.TabIndex = 0;
@@ -57,7 +57,7 @@ namespace SistemaMySQL.View
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(105, 18);
+            this.txtId.Location = new System.Drawing.Point(103, 21);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(55, 20);
             this.txtId.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace SistemaMySQL.View
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 48);
+            this.label2.Location = new System.Drawing.Point(61, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 2;
@@ -74,15 +74,15 @@ namespace SistemaMySQL.View
             // txtNome
             // 
             this.txtNome.Enabled = false;
-            this.txtNome.Location = new System.Drawing.Point(105, 44);
+            this.txtNome.Location = new System.Drawing.Point(103, 47);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(100, 20);
+            this.txtNome.Size = new System.Drawing.Size(291, 20);
             this.txtNome.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(55, 74);
+            this.label3.Location = new System.Drawing.Point(65, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 4;
@@ -95,7 +95,7 @@ namespace SistemaMySQL.View
             this.cmbSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino"});
-            this.cmbSexo.Location = new System.Drawing.Point(105, 70);
+            this.cmbSexo.Location = new System.Drawing.Point(103, 73);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(121, 21);
             this.cmbSexo.TabIndex = 5;
@@ -103,7 +103,7 @@ namespace SistemaMySQL.View
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 101);
+            this.label4.Location = new System.Drawing.Point(33, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 6;
@@ -112,9 +112,9 @@ namespace SistemaMySQL.View
             // dtNascimento
             // 
             this.dtNascimento.Enabled = false;
-            this.dtNascimento.Location = new System.Drawing.Point(105, 97);
+            this.dtNascimento.Location = new System.Drawing.Point(103, 100);
             this.dtNascimento.Name = "dtNascimento";
-            this.dtNascimento.Size = new System.Drawing.Size(68, 20);
+            this.dtNascimento.Size = new System.Drawing.Size(170, 20);
             this.dtNascimento.TabIndex = 7;
             // 
             // gridClientes
@@ -123,7 +123,7 @@ namespace SistemaMySQL.View
             this.gridClientes.AllowUserToDeleteRows = false;
             this.gridClientes.AllowUserToResizeColumns = false;
             this.gridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridClientes.Location = new System.Drawing.Point(26, 141);
+            this.gridClientes.Location = new System.Drawing.Point(31, 141);
             this.gridClientes.Name = "gridClientes";
             this.gridClientes.ReadOnly = true;
             this.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -131,10 +131,11 @@ namespace SistemaMySQL.View
             this.gridClientes.TabIndex = 8;
             this.gridClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellClick);
             this.gridClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellDoubleClick);
+            this.gridClientes.Enter += new System.EventHandler(this.gridClientes_Enter);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(68, 332);
+            this.btnNovo.Location = new System.Drawing.Point(164, 324);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 9;
@@ -144,7 +145,7 @@ namespace SistemaMySQL.View
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(153, 333);
+            this.btnSalvar.Location = new System.Drawing.Point(249, 325);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 10;
@@ -154,7 +155,7 @@ namespace SistemaMySQL.View
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(237, 334);
+            this.btnEditar.Location = new System.Drawing.Point(333, 326);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 11;
@@ -164,12 +165,13 @@ namespace SistemaMySQL.View
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(321, 334);
+            this.btnExcluir.Location = new System.Drawing.Point(417, 326);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 12;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // frmClientes
             // 
