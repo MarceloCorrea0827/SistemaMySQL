@@ -89,6 +89,9 @@ namespace SistemaMySQL.View
             // cmbSexo
             // 
             this.cmbSexo.FormattingEnabled = true;
+            this.cmbSexo.Items.AddRange(new object[] {
+            "Masculino",
+            "Feminino"});
             this.cmbSexo.Location = new System.Drawing.Point(105, 70);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(121, 21);
@@ -178,6 +181,7 @@ namespace SistemaMySQL.View
             this.Controls.Add(this.label1);
             this.Name = "frmClientes";
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.frmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,20 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaMySQL.Model;
 
 namespace SistemaMySQL.View
 {
     public partial class frmClientes : Form
     {
+        ClienteModel model = new ClienteModel();
+
         public frmClientes()
         {
             InitializeComponent();
+        }
+
+        private void frmClientes_Load(object sender, EventArgs e)
+        {
+            Listar();
+        }
+
+        public void Listar()
+        {
+            try
+            {
+                gridClientes.DataSource = model.Listar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar os dados" + ex.Message);
+            }
         }
     }
 }

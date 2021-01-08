@@ -6,13 +6,13 @@ namespace SistemaMySQL.DAO
     class ClienteDAO
     {
         string conexao = "SERVER=localhost; "
-                        + "DATABASE=sistema_clientes; "
+                        + "DATABASE=sistema_cliente; "
                         + "UID=root; "
                         + "PWD=ZaXsCd098890";
         MySqlConnection conn = null;
         MySqlCommand sql;
 
-        public DataTable BuscarDados()
+        public DataTable Listar()
         {
             try
             {
@@ -24,10 +24,9 @@ namespace SistemaMySQL.DAO
                 da.Fill(dt);
                 return dt;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
     }
