@@ -28,15 +28,15 @@ namespace SistemaMySQL.DAO
             }
         }
 
-        public void Salvar (Clientes dado)
+        public void Salvar (Clientes dados)
         {
             try
             {
                 conn.AbrirConexao();
                 sql = new MySqlCommand("insert into clientes (nome, sexo, nascimento)  values (@nome, @sexo, @nascimento)", conn.conn);
-                sql.Parameters.AddWithValue("@nome", dado.Nome);
-                sql.Parameters.AddWithValue("@sexo", dado.Sexo);
-                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.Parameters.AddWithValue("@nome", dados.Nome);
+                sql.Parameters.AddWithValue("@sexo", dados.Sexo);
+                sql.Parameters.AddWithValue("@nascimento", dados.Nascimento);
                 sql.ExecuteNonQuery();
                 conn.fecharConexao();
             }
@@ -47,16 +47,16 @@ namespace SistemaMySQL.DAO
             }
         }
 
-        public void Editar(Clientes dado)
+        public void Editar(Clientes dados)
         {
             try
             {
                 conn.AbrirConexao();
                 sql = new MySqlCommand("update clientes set nome = @nome, sexo = @sexo, nascimento = @nascimento where id = @id", conn.conn);
-                sql.Parameters.AddWithValue("@id", dado.Id);
-                sql.Parameters.AddWithValue("@nome", dado.Nome);
-                sql.Parameters.AddWithValue("@sexo", dado.Sexo);
-                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.Parameters.AddWithValue("@id", dados.Id);
+                sql.Parameters.AddWithValue("@nome", dados.Nome);
+                sql.Parameters.AddWithValue("@sexo", dados.Sexo);
+                sql.Parameters.AddWithValue("@nascimento", dados.Nascimento);
                 sql.ExecuteNonQuery();
                 conn.fecharConexao();
             }
@@ -67,13 +67,13 @@ namespace SistemaMySQL.DAO
             }
         }
 
-        public void Excluir(Clientes dado)
+        public void Excluir(Clientes dados)
         {
             try
             {
                 conn.AbrirConexao();
                 sql = new MySqlCommand("delete from clientes where id = @id", conn.conn);
-                sql.Parameters.AddWithValue("@id", dado.Id);
+                sql.Parameters.AddWithValue("@id", dados.Id);
                 sql.ExecuteNonQuery();
                 conn.fecharConexao();
             }
@@ -81,6 +81,25 @@ namespace SistemaMySQL.DAO
             {
                 MessageBox.Show("Erro ao excluir dados do cliente " + ex.Message); ;
                 conn.fecharConexao();
+            }
+        }
+
+        public DataTable Buscar(Clientes dados)
+        {
+            try
+            {
+                conn.AbrirConexao();
+                sql = new MySqlCommand("select id,nome,sexo,nascimento from clientes where nome like @nome order by id desc", conn.conn);
+                sql.Parameters.AddWithValue("@nome", "%" + dados.Nome + "%");
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
             }
         }
     }

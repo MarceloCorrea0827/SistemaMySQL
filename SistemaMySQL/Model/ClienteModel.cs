@@ -22,11 +22,11 @@ namespace SistemaMySQL.Model
             }
         }
 
-        public void Salvar(Clientes dado)
+        public void Salvar(Clientes dados)
         {
             try
             {
-                dao.Salvar(dado);
+                dao.Salvar(dados);
             }
             catch (System.Exception ex)
             {
@@ -34,11 +34,11 @@ namespace SistemaMySQL.Model
             }
         }
         
-        public void Editar(Clientes dado)
+        public void Editar(Clientes dados)
         {
             try
             {
-                dao.Editar(dado);
+                dao.Editar(dados);
             }
             catch (System.Exception ex)
             {
@@ -46,16 +46,31 @@ namespace SistemaMySQL.Model
             }
         }
 
-        public void Excluir(Clientes dado)
+        public void Excluir(Clientes dados)
         {
             try
             {
-                dao.Excluir(dado);
+                dao.Excluir(dados);
             }
             catch (System.Exception ex)
             {
                 throw ex;
             }
         }
+
+        public DataTable Buscar(Clientes dados)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.Buscar(dados);
+                return dt;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

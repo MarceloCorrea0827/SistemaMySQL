@@ -121,10 +121,13 @@ namespace SistemaMySQL.View
 
         public void AtualizaCampos()
         {
-            txtId.Text = gridClientes.CurrentRow.Cells[0].Value.ToString();
-            txtNome.Text = gridClientes.CurrentRow.Cells[1].Value.ToString();
-            cmbSexo.Text = gridClientes.CurrentRow.Cells[2].Value.ToString();
-            dtNascimento.Text = gridClientes.CurrentRow.Cells[3].Value.ToString();
+            if (gridClientes.CurrentRow != null)
+            {
+                txtId.Text = gridClientes.CurrentRow.Cells[0].Value.ToString();
+                txtNome.Text = gridClientes.CurrentRow.Cells[1].Value.ToString();
+                cmbSexo.Text = gridClientes.CurrentRow.Cells[2].Value.ToString();
+                dtNascimento.Text = gridClientes.CurrentRow.Cells[3].Value.ToString();
+            }
         }
 
         private void gridClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -154,10 +157,39 @@ namespace SistemaMySQL.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Deseja realmente excluir o registro?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                Clientes dado = new Clientes();
+                Excluir(dado);
+                Listar();
+                AtualizaCampos();
+            }
+        }
+
+        public void Buscar(Clientes dados)
+        {
+            try
+            {
+                dados.Nome = txtPesquisa.Text;
+                gridClientes.DataSource = model.Buscar(dados);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar os dados " + ex.Message);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
             Clientes dado = new Clientes();
-            Excluir(dado);
-            Listar();
+            Buscar(dado);
             AtualizaCampos();
+
+            if (txtPesquisa.Text == "")
+            {
+                Listar();
+                return;
+            }
         }
     }
 }
