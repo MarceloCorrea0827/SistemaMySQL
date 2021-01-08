@@ -1,5 +1,6 @@
 ﻿using SistemaMySQL.DAO;
 using System.Data;
+using SistemaMySQL.Entidades;
 
 namespace SistemaMySQL.Model
 {
@@ -7,7 +8,7 @@ namespace SistemaMySQL.Model
     {
         ClienteDAO dao = new ClienteDAO();
 
-        public  DataTable Listar()
+        public DataTable Listar()
         {
             try
             {
@@ -17,7 +18,18 @@ namespace SistemaMySQL.Model
             }
             catch (System.Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        public void Salvar(Clientes dado)
+        {
+            try
+            {
+                dao.Salvar(dado);
+            }
+            catch (System.Exception ex)
+            {
                 throw ex;
             }
         }

@@ -1,23 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using SistemaMySQL.Entidades;
+using System.Windows.Forms;
 
 namespace SistemaMySQL.DAO
 {
     class ClienteDAO
     {
-        string conexao = "SERVER=localhost; "
-                        + "DATABASE=sistema_cliente; "
-                        + "UID=root; "
-                        + "PWD=ZaXsCd098890";
-        MySqlConnection conn = null;
         MySqlCommand sql;
+        Conexao conn = new Conexao();
 
         public DataTable Listar()
         {
             try
             {
-                conn = new MySqlConnection(conexao);
-                sql = new MySqlCommand("select id,nome,sexo,nascimento from clientes", conn);
+                conn.AbrirConexao();
+                sql = new MySqlCommand("select id,nome,sexo,nascimento from clientes order by id desc", conn.conn);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -27,6 +25,25 @@ namespace SistemaMySQL.DAO
             catch (System.Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void Salvar (Clientes dado)
+        {
+            try
+            {
+                conn.AbrirConexao();
+                sql = new MySqlCommand("insert into clientes (nome, sexo, nascimento)  values (@nome, @sexo, @nascimento)", conn.conn);
+                sql.Parameters.AddWithValue("@nome", dado.Nome);
+                sql.Parameters.AddWithValue("@sexo", dado.Sexo);
+                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.ExecuteNonQuery();
+                conn.fecharConexao();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar dados do cliente " + ex.Message); ;
+                conn.fecharConexao();
             }
         }
     }

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexao.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="Entidades\Clientes.cs" />
     <Compile Include="frmMenu.cs">

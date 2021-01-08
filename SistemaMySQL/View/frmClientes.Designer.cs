@@ -56,6 +56,7 @@ namespace SistemaMySQL.View
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(105, 18);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(55, 20);
@@ -72,6 +73,7 @@ namespace SistemaMySQL.View
             // 
             // txtNome
             // 
+            this.txtNome.Enabled = false;
             this.txtNome.Location = new System.Drawing.Point(105, 44);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
@@ -88,6 +90,7 @@ namespace SistemaMySQL.View
             // 
             // cmbSexo
             // 
+            this.cmbSexo.Enabled = false;
             this.cmbSexo.FormattingEnabled = true;
             this.cmbSexo.Items.AddRange(new object[] {
             "Masculino",
@@ -108,6 +111,7 @@ namespace SistemaMySQL.View
             // 
             // dtNascimento
             // 
+            this.dtNascimento.Enabled = false;
             this.dtNascimento.Location = new System.Drawing.Point(105, 97);
             this.dtNascimento.Name = "dtNascimento";
             this.dtNascimento.Size = new System.Drawing.Size(68, 20);
@@ -133,6 +137,7 @@ namespace SistemaMySQL.View
             this.btnNovo.TabIndex = 9;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnSalvar
             // 
@@ -142,6 +147,7 @@ namespace SistemaMySQL.View
             this.btnSalvar.TabIndex = 10;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnEditar
             // 
