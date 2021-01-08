@@ -126,8 +126,11 @@ namespace SistemaMySQL.View
             this.gridClientes.Location = new System.Drawing.Point(26, 141);
             this.gridClientes.Name = "gridClientes";
             this.gridClientes.ReadOnly = true;
+            this.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridClientes.Size = new System.Drawing.Size(612, 170);
             this.gridClientes.TabIndex = 8;
+            this.gridClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellClick);
+            this.gridClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellDoubleClick);
             // 
             // btnNovo
             // 
@@ -157,6 +160,7 @@ namespace SistemaMySQL.View
             this.btnEditar.TabIndex = 11;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnExcluir
             // 

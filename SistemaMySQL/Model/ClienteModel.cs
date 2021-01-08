@@ -33,5 +33,18 @@ namespace SistemaMySQL.Model
                 throw ex;
             }
         }
+        
+        public void Editar(Clientes dado)
+        {
+            try
+            {
+                dao.Editar(dado);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -75,10 +75,49 @@ namespace SistemaMySQL.View
             }
         }
 
+        public void Editar(Clientes dado)
+        {
+            try
+            {
+                dado.Id = int.Parse(txtId.Text);
+                dado.Nome = txtNome.Text;
+                dado.Sexo = cmbSexo.Text;
+                dado.Nascimento = dtNascimento.Value;
+
+                model.Editar(dado);
+                MessageBox.Show("Cliente editado com sucesso!");
+                DesabilitarCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao editar os dados do cliente " + ex.Message);
+            }
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Clientes dado = new Clientes();
             Salvar(dado);
+            Listar();
+        }
+
+        private void gridClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.Text = gridClientes.CurrentRow.Cells[0].Value.ToString();
+            txtNome.Text = gridClientes.CurrentRow.Cells[1].Value.ToString();
+            cmbSexo.Text = gridClientes.CurrentRow.Cells[2].Value.ToString();
+            dtNascimento.Text = gridClientes.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void gridClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HabilitarCampos();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Clientes dado = new Clientes();
+            Editar(dado);
             Listar();
         }
     }

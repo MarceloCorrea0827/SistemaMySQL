@@ -46,5 +46,26 @@ namespace SistemaMySQL.DAO
                 conn.fecharConexao();
             }
         }
+
+        public void Editar(Clientes dado)
+        {
+            try
+            {
+                conn.AbrirConexao();
+                sql = new MySqlCommand("update clientes set nome = @nome, sexo = @sexo, nascimento = @nascimento where id = @id", conn.conn);
+                sql.Parameters.AddWithValue("@id", dado.Id);
+                sql.Parameters.AddWithValue("@nome", dado.Nome);
+                sql.Parameters.AddWithValue("@sexo", dado.Sexo);
+                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.ExecuteNonQuery();
+                conn.fecharConexao();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Erro ao editar dados do cliente " + ex.Message); ;
+                conn.fecharConexao();
+            }
+        }
+
     }
 }
