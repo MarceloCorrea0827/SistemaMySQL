@@ -30,6 +30,7 @@ namespace SistemaMySQL
         private void InitializeComponent()
         {
             this.btnClientes = new System.Windows.Forms.Button();
+            this.btnVendas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClientes
@@ -42,11 +43,22 @@ namespace SistemaMySQL
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
+            // btnVendas
+            // 
+            this.btnVendas.Location = new System.Drawing.Point(127, 38);
+            this.btnVendas.Name = "btnVendas";
+            this.btnVendas.Size = new System.Drawing.Size(75, 23);
+            this.btnVendas.TabIndex = 1;
+            this.btnVendas.Text = "Vendas";
+            this.btnVendas.UseVisualStyleBackColor = true;
+            this.btnVendas.Click += new System.EventHandler(this.btnVendas_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 100);
+            this.Controls.Add(this.btnVendas);
             this.Controls.Add(this.btnClientes);
             this.Name = "frmMenu";
             this.Text = "Sistema Clientes - Menu";
@@ -57,6 +69,7 @@ namespace SistemaMySQL
         #endregion
 
         private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnVendas;
     }
 }
 

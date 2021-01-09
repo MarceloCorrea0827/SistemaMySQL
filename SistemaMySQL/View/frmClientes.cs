@@ -145,6 +145,7 @@ namespace SistemaMySQL.View
             Clientes dado = new Clientes();
             Editar(dado);
             Listar();
+            AtualizaCampos();
         }
 
         private void gridClientes_Enter(object sender, EventArgs e)
